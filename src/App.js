@@ -1,23 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from "./components/header";
+import Footer from './components/footer';
+import C1 from './components/body/conditions/c1';
+import Condition from './components/body/conditions/condition';
+import { useState } from 'react';
 
 function App() {
+let value='test';
+const [parentCount, setParentCount] = useState(10)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <h1>appCount{parentCount}</h1>
+      <Condition countValue={parentCount} setParentCount={setParentCount} shouldShowC1={value}/>
+      <Condition countValue={parentCount} children={value} setParentCount={setParentCount} >
+        this is inside condition 
+      </Condition>
+      <Footer/>
     </div>
   );
 }
